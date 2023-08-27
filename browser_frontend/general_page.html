@@ -10,7 +10,8 @@
 
             <a href="#home">Anki Website</a>
 
-            <a href="#home">Upload a Deck</a>
+            <input type="file" id="deck_upload" style="display:none" onchange="anki_file_changed(this)"/> 
+            <a href="#home" id="navbar_upload" onclick="handle_navbar_click('upload')">Upload a Deck</a>
 
             <div class="dropdown">
                 <button class="dropbtn">Anki Functionalities
@@ -35,6 +36,26 @@
             <a href="#home">About</a>
         </div>
     </body>
+    <script src="..\browser_source_files\frontend.js"></script>
+    <script>
+        function handle_navbar_click(navbar_element) {
+
+            switch(navbar_element) {
+                case "upload":
+                    console.log("Hey");
+                    document.getElementById('deck_upload').click();
+                    break;
+            };
+
+        }
+
+        function anki_file_changed(file_location) {
+
+            let file = file_location.files[0];
+            document.getElementById('navbar_upload').textContent = file.name;
+            window.process_anki_db(file);
+        }
+    </script>
 
 
 
