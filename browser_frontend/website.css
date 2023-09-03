@@ -67,3 +67,9 @@
   .dropdown:hover .dropdown-content {
     display: block;
   }
+
+  .website_content_container {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
