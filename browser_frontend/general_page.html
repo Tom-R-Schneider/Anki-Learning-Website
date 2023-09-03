@@ -11,14 +11,14 @@
             <a href="#home">Anki Website</a>
 
             <input type="file" id="deck_upload" style="display:none" onchange="anki_file_changed(this)"/> 
-            <a href="#home" id="navbar_upload" onclick="handle_navbar_click('upload')">Upload a Deck</a>
+            <a href="#home" id="navbar_upload" onclick="handle_navbar_click('deck_upload')">Upload a Deck</a>
 
             <div class="dropdown">
                 <button class="dropbtn">Anki Functionalities
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-content">
-                    <a href="#">Create Learning Plan</a>
+                    <a href="#" onclick="handle_navbar_click('learning_plan')">Create Learning Plan</a>
                 </div>
             </div>
 
@@ -35,15 +35,23 @@
 
             <a href="#home">About</a>
         </div>
+        <div class="website_content_container" id="website_content">
+
+        </div>
     </body>
     <script src="..\browser_source_files\frontend.js"></script>
     <script>
+
         function handle_navbar_click(navbar_element) {
 
+            console.log(navbar_element);
             switch(navbar_element) {
-                case "upload":
-                    console.log("Hey");
+                case "deck_upload":
                     document.getElementById('deck_upload').click();
+                    break;
+
+                case "learning_plan":
+                    create_learning_plan_content();
                     break;
             };
 
@@ -54,6 +62,15 @@
             let file = file_location.files[0];
             document.getElementById('navbar_upload').textContent = file.name;
             window.process_anki_db(file);
+        }
+
+        function create_learning_plan_content() {
+
+            console.log(window.get_db());
+            console.log(window.get_zip());
+            let deck_graph = window.get_html_deck_graph();
+            console.log(deck_graph);
+            document.getElementById('website_content').innerHTML = deck_graph;
         }
     </script>
 
