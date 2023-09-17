@@ -72,4 +72,13 @@
     display: flex;
     justify-content: center;
     text-align: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .content_box {
+    padding: 20px;
+    border: 2px solid black;
+    border-radius: 25px;
+    flex-direction: column;
   }

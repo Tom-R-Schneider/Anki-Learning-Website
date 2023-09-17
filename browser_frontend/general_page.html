@@ -27,7 +27,7 @@
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-content">
-                    <a href="#">Create Test</a>
+                    <a href="#" onclick="handle_navbar_click('create_test')">Create Test</a>
                 </div>
             </div>
 
@@ -53,6 +53,10 @@
                 case "learning_plan":
                     create_learning_plan_content();
                     break;
+
+                case "create_test":
+                    create_test_content();
+                    break;
             };
 
         }
@@ -66,11 +70,14 @@
 
         function create_learning_plan_content() {
 
-            console.log(window.get_db());
-            console.log(window.get_zip());
-            let deck_graph = window.get_html_deck_graph();
-            console.log(deck_graph);
-            document.getElementById('website_content').innerHTML = deck_graph;
+            document.getElementById('website_content').innerHTML = window.get_html_deck_graph();
+        }
+
+        function create_test_content() {
+
+            document.getElementById('website_content').innerHTML = window.get_html_deck_graph();
+            document.getElementById('website_content').innerHTML += window.get_user_options("create_test");
+
         }
     </script>
 
